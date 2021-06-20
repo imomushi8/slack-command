@@ -32,4 +32,8 @@ object Application extends Controller {
     }
     Ok(out)
   }
+
+  def test = Action {
+    Ok(views.html.index("POST test is success"))
+  }
 }
