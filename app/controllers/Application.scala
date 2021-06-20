@@ -1,10 +1,10 @@
 package controllers
 
+import controllers.Assets.Ok
 import play.api._
 import play.api.mvc._
 import play.api.cache.Cache
 import play.api.Play.current
-
 import play.api.db._
 
 object Application extends Controller {
@@ -34,7 +34,8 @@ object Application extends Controller {
   }
 
   def test = Action { implicit request => {
-      Ok(views.html.index(request.body.asFormUrlEncoded.get("text")(0)))
+      val name = request.body.asFormUrlEncoded.get("text")(0)
+      Ok(views.html.index(s"hello, $name"))
     }
   }
 }
