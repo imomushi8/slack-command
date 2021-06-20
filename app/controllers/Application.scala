@@ -33,7 +33,8 @@ object Application extends Controller {
     Ok(out)
   }
 
-  def test = Action {
-    Ok(views.html.index("POST test is success"))
+  def test = Action { implicit request => {
+      Ok(views.html.index(request.body.asFormUrlEncoded.get("text")(0)))
+    }
   }
 }
